@@ -1,0 +1,74 @@
+type Address @model {
+  id: ID!
+  state: String!
+  city: String!
+  pincode: String!
+  building_detail: String!
+  landmark: String!
+}
+
+type ContactDetails @model {
+  id: ID!
+  phone_number: String!
+  email_address: String!
+  address: [Address] @connection(fields: ["id"])
+}
+
+type HelpSeeker @model {
+  id: ID!
+  name: String!
+  contact_details: [ContactDetails] @connection(fields: ["id"])
+  note: String!
+  type: String!
+}
+
+type Volunteer @model {
+  id: ID!
+  name: String!
+  contact_details: [ContactDetails] @connection(fields: ["id"])
+  note: String!
+  skill_type: String!
+  language: String!
+  num_of_hrs_per_week: Int!
+}
+
+type Donor @model {
+  id: ID!
+  name: String!
+  contact_details: [ContactDetails] @connection(fields: ["id"])
+  note: String!
+  amount: Int!
+  case: [Case] @connection(fields: ["id"])
+}
+
+type Case @model {
+  id: ID!
+  helpseeker: [HelpSeeker] @connection(fields: ["id"])
+  description: String!
+  contact_details: [ContactDetails] @connection(fields: ["id"])
+  requirement_type : [Requirement]  @connection(fields: ["id"])
+  num_of_adults: Int!
+  num_of_children: Int!
+  priority: [Priority]
+  status: [Status]
+}
+
+type Requirement @model {
+   id: ID!
+   name: String!
+   whishlist_url: String!
+   description: String!
+}
+
+enum Status {
+  PENDING
+  VERIFIED
+  APPROVED
+  REJECTED
+}
+
+enum Priority {
+  HIGH
+  MEDIUM
+  LOW
+}
