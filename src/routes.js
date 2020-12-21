@@ -22,6 +22,7 @@ import Typography from "views/Typography.jsx";
 import Icons from "views/Icons.jsx";
 import Maps from "views/Maps.jsx";
 import Notifications from "views/Notifications.jsx";
+import JoinUS from "views/JoinUS.jsx";
 import Upgrade from "views/Upgrade.jsx";
 
 const dashboardRoutes = [
@@ -72,6 +73,13 @@ const dashboardRoutes = [
     name: "Notifications",
     icon: "pe-7s-bell",
     component: Notifications,
+    layout: "/admin"
+  },
+  {
+    path: "/joinus",
+    name: "Join US",
+    icon: "pe-7s-plus",
+    component: JoinUS,
     layout: "/admin"
   }
   // {
