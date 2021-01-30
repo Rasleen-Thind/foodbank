@@ -11,13 +11,13 @@ type ContactDetails @model {
   id: ID!
   phone_number: String!
   email_address: String!
-  address: [Address] @connection(fields: ["id"])
+  address: Address @connection
 }
 
 type HelpSeeker @model {
   id: ID!
   name: String!
-  contact_details: [ContactDetails] @connection(fields: ["id"])
+  contact_details: ContactDetails @connection
   note: String!
   type: String!
 }
@@ -25,7 +25,7 @@ type HelpSeeker @model {
 type Volunteer @model {
   id: ID!
   name: String!
-  contact_details: [ContactDetails] @connection(fields: ["id"])
+  contact_details: ContactDetails @connection
   note: String!
   skill_type: String!
   language: String!
@@ -35,18 +35,18 @@ type Volunteer @model {
 type Donor @model {
   id: ID!
   name: String!
-  contact_details: [ContactDetails] @connection(fields: ["id"])
+  contact_details: ContactDetails @connection
   note: String!
   amount: Int!
-  case: [Case] @connection(fields: ["id"])
+  case: Case @connection
 }
 
 type Case @model {
   id: ID!
-  helpseeker: [HelpSeeker] @connection(fields: ["id"])
+  helpseeker: HelpSeeker @connection
   description: String!
-  contact_details: [ContactDetails] @connection(fields: ["id"])
-  requirement_type : [Requirement]  @connection(fields: ["id"])
+  contact_details: ContactDetails @connection
+  requirement_type : Requirement  @connection
   num_of_adults: Int!
   num_of_children: Int!
   priority: [Priority]
