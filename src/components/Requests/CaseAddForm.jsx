@@ -2,7 +2,7 @@
 import React, { useState } from 'react'
 import { FormGroup, Form, ControlLabel, FormControl, Button } from 'react-bootstrap';
 import Select from 'react-select';
-import Amplify, { API, graphqlOperation } from 'aws-amplify'
+import { API, graphqlOperation } from 'aws-amplify'
 import { createCase , createAddress, createContactDetails, createHelpSeeker, createRequirement} from 'graphql/mutations';
 
 const initialState = { address: '', description: '', amazon_wishlist_url: '' };
@@ -22,24 +22,18 @@ const priorityOptions = [
 
 var addressState = {};
 var contactDetailState = {};
+var requirementState = {};
+var caseState = {};
 
 const CaseAddForm = () => {
 
     const [formState, setFormState] = useState(initialState)
-    const [cases, setCases] = useState([])
     function setInput(key, value) {
         setFormState({ ...formState, [key]: value })
     }
 
     async function addCase() {
         try {
-            // setShow(false)
-            // if (!formState.amazon_wishlist_url || !formState.description) return
-            // const caseState = { ...formState }
-            alert(formState["description"]);
-            console.log(formState["description"]);
-            // setCases([caseState])
-            // setFormState(initialState)
             addressState = {
                 state : formState['state'],
                 city : formState['city'],
@@ -47,20 +41,32 @@ const CaseAddForm = () => {
                 building_detail : formState['building_detail'],
                 landmark : formState['landmark']
             }
-           
-            console.log(formState['landmark']);
             var address = await API.graphql(graphqlOperation(createAddress, { input: addressState}));
+            console.log(address);
             contactDetailState = {
                 phone_number : formState['phone_number'],
                 email_address : formState['email_address'],
-                address : address
+                contactDetailsAddressId : address['data']['createAddress']['id']
             };
             var contactDetail = await API.graphql(graphqlOperation(createContactDetails, { input: contactDetailState}));
-            // create address
-            // create contact address
-            // serach and create helseerker id
-            // cvreate requirement
-            // await API.graphql(graphqlOperation(createCase, { input: caseState }))
+            requirementState = {
+                whishlist_url : formState['whishlist_url'],
+                name : formState['description'],
+                description: formState['description']
+            };
+            var requirement = await API.graphql(graphqlOperation(createRequirement, {input : requirementState}))
+            caseState = {
+                description: formState['description'],
+                num_of_adults: formState['num_of_adults'],
+                num_of_children: formState['num_of_children'],
+                priority: formState['priority']['value'],
+                status: formState['status']['value'],
+                caseContact_detailsId: contactDetail['data']['createContactDetails']['id'],
+                caseRequirement_typeId : requirement['data']['createRequirement']['id']
+            }
+            console.log(caseState);
+            var abc = await API.graphql(graphqlOperation(createCase, { input: caseState }));
+            console.log(abc);
         } catch (err) {
             console.log('error creating case:', err)
         }

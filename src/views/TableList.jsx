@@ -1,9 +1,9 @@
 import React, { Component } from "react";
-import { Grid, Row, Col, Table } from "react-bootstrap";
+import { Grid, Row, Col } from "react-bootstrap";
 
 import Card from "components/Card/Card.jsx";
 import CaseAddModal from "components/Requests/CaseAddModal";
-import { thArray, tdArray } from "variables/Variables.jsx";
+import CaseDetails from "components/Requests/CaseDetails";
 
 class TableList extends Component {
   render() {
@@ -18,26 +18,7 @@ class TableList extends Component {
                 content={
                   <div>
                   <CaseAddModal/>
-                  <Table striped hover>
-                    <thead>
-                      <tr>
-                        {thArray.map((prop, key) => {
-                          return <th key={key}>{prop}</th>;
-                        })}
-                      </tr>
-                    </thead>
-                    <tbody>
-                      {tdArray.map((prop, key) => {
-                        return (
-                          <tr key={key}>
-                            {prop.map((prop, key) => {
-                              return <td key={key}>{prop}</td>;
-                            })}
-                          </tr>
-                        );
-                      })}
-                    </tbody>
-                    </Table>
+                  <CaseDetails/>
                     </div>
                 }
               />
