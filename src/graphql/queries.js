@@ -363,7 +363,6 @@ export const getDistributor = /* GraphQL */ `
       id
       name
       details
-      isGovt
       contact_details {
         id
         phone_number
@@ -401,7 +400,6 @@ export const listDistributors = /* GraphQL */ `
         id
         name
         details
-        isGovt
         contact_details {
           id
           phone_number

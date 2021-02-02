@@ -4,6 +4,7 @@ import { FormGroup, Form, ControlLabel, FormControl, Button } from 'react-bootst
 import Select from 'react-select';
 import { API, graphqlOperation } from 'aws-amplify'
 import {createAddress, createContactDetails, createDistributor} from 'graphql/mutations';
+import Checkbox from "components/CustomCheckbox/CustomCheckbox.jsx";
 
 const requestOptions = [
     { value: 'cooked_meal', label: 'Cooked Meal' },
@@ -41,19 +42,17 @@ const DistributorAddForm = () => {
             distributorState = {
                 name: formState['name'],
                 request_type: formState['request_type']['value'],
-                caseContact_detailsId: contactDetail['data']['createContactDetails']['id'],
+                distributorContact_detailsId: contactDetail['data']['createContactDetails']['id'],
                 num_of_hrs_per_week: formState['num_of_hrs_per_week'],
-                note: formState['note'],
+                details: formState['note'],
                 cases_per_week: formState['cases_per_week'],
                 num_of_volunteers : formState['num_of_volunteers'],
                 link : formState['link']
-
             }
-            console.log(volunteerState);
             var abc = await API.graphql(graphqlOperation(createDistributor, { input: distributorState }));
             console.log(abc);
         } catch (err) {
-            console.log('error creating volunteer:', err)
+            console.log('error creating Distributor:', err)
         }
     }
 
@@ -67,6 +66,13 @@ const DistributorAddForm = () => {
                 <ControlLabel>Tell Us about yourself</ControlLabel>
                 <FormControl onChange={event => setInput('note', event.target.value)} placeholder="note" />
             </FormGroup>
+            {/* <FormGroup>
+                <ControlLabel>Govt operated organisation? </ControlLabel>
+            <Checkbox
+              number="123"
+              isChecked={false}
+            />
+             </FormGroup> */}
             <FormGroup>
                 <ControlLabel>Buildling/Flat no</ControlLabel>
                 <FormControl onChange={event => setInput('building_detail', event.target.value)} placeholder="Building detail" />

@@ -56,7 +56,6 @@ type Distributor @model {
   id: ID!
   name: String!
   details: String!
-  isGovt : Boolean!
   contact_details: ContactDetails @connection
   request_type: String!
   cases_per_week: Int!

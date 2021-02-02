@@ -54,11 +54,12 @@ const VolunteerAddForm = () => {
                 contactDetailsAddressId : address['data']['createAddress']['id']
             };
             var contactDetail = await API.graphql(graphqlOperation(createContactDetails, { input: contactDetailState}));
+            console.log(contactDetail);
             volunteerState = {
                 name: formState['name'],
                 skill_type: formState['skill_type']['value'],
                 language: formState['language']['value'],
-                caseContact_detailsId: contactDetail['data']['createContactDetails']['id'],
+                volunteerContact_detailsId: contactDetail['data']['createContactDetails']['id'],
                 num_of_hrs_per_week: formState['num_of_hrs_per_week'],
                 note: formState['note'],
             }

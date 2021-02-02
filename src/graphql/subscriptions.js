@@ -577,7 +577,6 @@ export const onCreateDistributor = /* GraphQL */ `
       id
       name
       details
-      isGovt
       contact_details {
         id
         phone_number
@@ -610,7 +609,6 @@ export const onUpdateDistributor = /* GraphQL */ `
       id
       name
       details
-      isGovt
       contact_details {
         id
         phone_number
@@ -643,7 +641,6 @@ export const onDeleteDistributor = /* GraphQL */ `
       id
       name
       details
-      isGovt
       contact_details {
         id
         phone_number
