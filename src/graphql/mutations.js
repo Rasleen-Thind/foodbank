@@ -351,15 +351,18 @@ export const createDonor = /* GraphQL */ `
       amount
       case {
         id
-        helpseeker {
+        description
+        request {
           id
           name
-          note
-          type
+          details
+          help_with
+          request_type
+          num_of_adults
+          num_of_children
           createdAt
           updatedAt
         }
-        description
         contact_details {
           id
           phone_number
@@ -375,8 +378,6 @@ export const createDonor = /* GraphQL */ `
           createdAt
           updatedAt
         }
-        num_of_adults
-        num_of_children
         priority
         status
         createdAt
@@ -416,15 +417,18 @@ export const updateDonor = /* GraphQL */ `
       amount
       case {
         id
-        helpseeker {
+        description
+        request {
           id
           name
-          note
-          type
+          details
+          help_with
+          request_type
+          num_of_adults
+          num_of_children
           createdAt
           updatedAt
         }
-        description
         contact_details {
           id
           phone_number
@@ -440,8 +444,6 @@ export const updateDonor = /* GraphQL */ `
           createdAt
           updatedAt
         }
-        num_of_adults
-        num_of_children
         priority
         status
         createdAt
@@ -481,15 +483,18 @@ export const deleteDonor = /* GraphQL */ `
       amount
       case {
         id
-        helpseeker {
+        description
+        request {
           id
           name
-          note
-          type
+          details
+          help_with
+          request_type
+          num_of_adults
+          num_of_children
           createdAt
           updatedAt
         }
-        description
         contact_details {
           id
           phone_number
@@ -505,13 +510,224 @@ export const deleteDonor = /* GraphQL */ `
           createdAt
           updatedAt
         }
-        num_of_adults
-        num_of_children
         priority
         status
         createdAt
         updatedAt
       }
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const createRequest = /* GraphQL */ `
+  mutation CreateRequest(
+    $input: CreateRequestInput!
+    $condition: ModelRequestConditionInput
+  ) {
+    createRequest(input: $input, condition: $condition) {
+      id
+      name
+      details
+      contact_details {
+        id
+        phone_number
+        email_address
+        address {
+          id
+          state
+          city
+          pincode
+          building_detail
+          landmark
+          createdAt
+          updatedAt
+        }
+        createdAt
+        updatedAt
+      }
+      help_with
+      request_type
+      num_of_adults
+      num_of_children
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const updateRequest = /* GraphQL */ `
+  mutation UpdateRequest(
+    $input: UpdateRequestInput!
+    $condition: ModelRequestConditionInput
+  ) {
+    updateRequest(input: $input, condition: $condition) {
+      id
+      name
+      details
+      contact_details {
+        id
+        phone_number
+        email_address
+        address {
+          id
+          state
+          city
+          pincode
+          building_detail
+          landmark
+          createdAt
+          updatedAt
+        }
+        createdAt
+        updatedAt
+      }
+      help_with
+      request_type
+      num_of_adults
+      num_of_children
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const deleteRequest = /* GraphQL */ `
+  mutation DeleteRequest(
+    $input: DeleteRequestInput!
+    $condition: ModelRequestConditionInput
+  ) {
+    deleteRequest(input: $input, condition: $condition) {
+      id
+      name
+      details
+      contact_details {
+        id
+        phone_number
+        email_address
+        address {
+          id
+          state
+          city
+          pincode
+          building_detail
+          landmark
+          createdAt
+          updatedAt
+        }
+        createdAt
+        updatedAt
+      }
+      help_with
+      request_type
+      num_of_adults
+      num_of_children
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const createDistributors = /* GraphQL */ `
+  mutation CreateDistributors(
+    $input: CreateDistributorsInput!
+    $condition: ModelDistributorsConditionInput
+  ) {
+    createDistributors(input: $input, condition: $condition) {
+      id
+      name
+      details
+      isGovt
+      contact_details {
+        id
+        phone_number
+        email_address
+        address {
+          id
+          state
+          city
+          pincode
+          building_detail
+          landmark
+          createdAt
+          updatedAt
+        }
+        createdAt
+        updatedAt
+      }
+      request_type
+      cases_per_week
+      num_of_volunteers
+      link
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const updateDistributors = /* GraphQL */ `
+  mutation UpdateDistributors(
+    $input: UpdateDistributorsInput!
+    $condition: ModelDistributorsConditionInput
+  ) {
+    updateDistributors(input: $input, condition: $condition) {
+      id
+      name
+      details
+      isGovt
+      contact_details {
+        id
+        phone_number
+        email_address
+        address {
+          id
+          state
+          city
+          pincode
+          building_detail
+          landmark
+          createdAt
+          updatedAt
+        }
+        createdAt
+        updatedAt
+      }
+      request_type
+      cases_per_week
+      num_of_volunteers
+      link
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const deleteDistributors = /* GraphQL */ `
+  mutation DeleteDistributors(
+    $input: DeleteDistributorsInput!
+    $condition: ModelDistributorsConditionInput
+  ) {
+    deleteDistributors(input: $input, condition: $condition) {
+      id
+      name
+      details
+      isGovt
+      contact_details {
+        id
+        phone_number
+        email_address
+        address {
+          id
+          state
+          city
+          pincode
+          building_detail
+          landmark
+          createdAt
+          updatedAt
+        }
+        createdAt
+        updatedAt
+      }
+      request_type
+      cases_per_week
+      num_of_volunteers
+      link
       createdAt
       updatedAt
     }
@@ -524,9 +740,11 @@ export const createCase = /* GraphQL */ `
   ) {
     createCase(input: $input, condition: $condition) {
       id
-      helpseeker {
+      description
+      request {
         id
         name
+        details
         contact_details {
           id
           phone_number
@@ -534,12 +752,13 @@ export const createCase = /* GraphQL */ `
           createdAt
           updatedAt
         }
-        note
-        type
+        help_with
+        request_type
+        num_of_adults
+        num_of_children
         createdAt
         updatedAt
       }
-      description
       contact_details {
         id
         phone_number
@@ -565,8 +784,6 @@ export const createCase = /* GraphQL */ `
         createdAt
         updatedAt
       }
-      num_of_adults
-      num_of_children
       priority
       status
       createdAt
@@ -581,9 +798,11 @@ export const updateCase = /* GraphQL */ `
   ) {
     updateCase(input: $input, condition: $condition) {
       id
-      helpseeker {
+      description
+      request {
         id
         name
+        details
         contact_details {
           id
           phone_number
@@ -591,12 +810,13 @@ export const updateCase = /* GraphQL */ `
           createdAt
           updatedAt
         }
-        note
-        type
+        help_with
+        request_type
+        num_of_adults
+        num_of_children
         createdAt
         updatedAt
       }
-      description
       contact_details {
         id
         phone_number
@@ -622,8 +842,6 @@ export const updateCase = /* GraphQL */ `
         createdAt
         updatedAt
       }
-      num_of_adults
-      num_of_children
       priority
       status
       createdAt
@@ -638,9 +856,11 @@ export const deleteCase = /* GraphQL */ `
   ) {
     deleteCase(input: $input, condition: $condition) {
       id
-      helpseeker {
+      description
+      request {
         id
         name
+        details
         contact_details {
           id
           phone_number
@@ -648,12 +868,13 @@ export const deleteCase = /* GraphQL */ `
           createdAt
           updatedAt
         }
-        note
-        type
+        help_with
+        request_type
+        num_of_adults
+        num_of_children
         createdAt
         updatedAt
       }
-      description
       contact_details {
         id
         phone_number
@@ -679,8 +900,6 @@ export const deleteCase = /* GraphQL */ `
         createdAt
         updatedAt
       }
-      num_of_adults
-      num_of_children
       priority
       status
       createdAt

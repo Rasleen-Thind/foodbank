@@ -44,20 +44,32 @@ type Donor @model {
 type Request @model {
   id: ID!
   name: String!
+  details: String!
   contact_details: ContactDetails @connection
-  note: String!
-  amount: Int!
-  case: Case @connection
+  help_with : String!
+  request_type: String!
+  num_of_adults: Int!
+  num_of_children: Int!
+}
+
+type Distributors @model {
+  id: ID!
+  name: String!
+  details: String!
+  isGovt : Boolean!
+  contact_details: ContactDetails @connection
+  request_type: String!
+  cases_per_week: Int!
+  num_of_volunteers: Int!
+  link : String!
 }
 
 type Case @model {
   id: ID!
-  helpseeker: HelpSeeker @connection
-  description: String!
+  description: String! 
+  request : Request @connection
   contact_details: ContactDetails @connection
   requirement_type : Requirement  @connection
-  num_of_adults: Int!
-  num_of_children: Int!
   priority: [Priority]
   status: [Status]
 }

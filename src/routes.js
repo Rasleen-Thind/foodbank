@@ -23,6 +23,7 @@ import Icons from "views/Icons.jsx";
 import Maps from "views/Maps.jsx";
 import Notifications from "views/Notifications.jsx";
 import Upgrade from "views/Upgrade.jsx";
+import JoinUs from "views/JoinUs";
 
 const dashboardRoutes = [
   {
@@ -65,6 +66,13 @@ const dashboardRoutes = [
     name: "FoodBank Maps",
     icon: "pe-7s-map-marker",
     component: Maps,
+    layout: "/admin"
+  },
+  {
+    path: "/join_us",
+    name: "Join US",
+    icon: "pe-7s-user",
+    component: JoinUs,
     layout: "/admin"
   },
   // {

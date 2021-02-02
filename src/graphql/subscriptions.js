@@ -312,15 +312,18 @@ export const onCreateDonor = /* GraphQL */ `
       amount
       case {
         id
-        helpseeker {
+        description
+        request {
           id
           name
-          note
-          type
+          details
+          help_with
+          request_type
+          num_of_adults
+          num_of_children
           createdAt
           updatedAt
         }
-        description
         contact_details {
           id
           phone_number
@@ -336,8 +339,6 @@ export const onCreateDonor = /* GraphQL */ `
           createdAt
           updatedAt
         }
-        num_of_adults
-        num_of_children
         priority
         status
         createdAt
@@ -374,15 +375,18 @@ export const onUpdateDonor = /* GraphQL */ `
       amount
       case {
         id
-        helpseeker {
+        description
+        request {
           id
           name
-          note
-          type
+          details
+          help_with
+          request_type
+          num_of_adults
+          num_of_children
           createdAt
           updatedAt
         }
-        description
         contact_details {
           id
           phone_number
@@ -398,8 +402,6 @@ export const onUpdateDonor = /* GraphQL */ `
           createdAt
           updatedAt
         }
-        num_of_adults
-        num_of_children
         priority
         status
         createdAt
@@ -436,15 +438,18 @@ export const onDeleteDonor = /* GraphQL */ `
       amount
       case {
         id
-        helpseeker {
+        description
+        request {
           id
           name
-          note
-          type
+          details
+          help_with
+          request_type
+          num_of_adults
+          num_of_children
           createdAt
           updatedAt
         }
-        description
         contact_details {
           id
           phone_number
@@ -460,8 +465,6 @@ export const onDeleteDonor = /* GraphQL */ `
           createdAt
           updatedAt
         }
-        num_of_adults
-        num_of_children
         priority
         status
         createdAt
@@ -472,13 +475,210 @@ export const onDeleteDonor = /* GraphQL */ `
     }
   }
 `;
+export const onCreateRequest = /* GraphQL */ `
+  subscription OnCreateRequest {
+    onCreateRequest {
+      id
+      name
+      details
+      contact_details {
+        id
+        phone_number
+        email_address
+        address {
+          id
+          state
+          city
+          pincode
+          building_detail
+          landmark
+          createdAt
+          updatedAt
+        }
+        createdAt
+        updatedAt
+      }
+      help_with
+      request_type
+      num_of_adults
+      num_of_children
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const onUpdateRequest = /* GraphQL */ `
+  subscription OnUpdateRequest {
+    onUpdateRequest {
+      id
+      name
+      details
+      contact_details {
+        id
+        phone_number
+        email_address
+        address {
+          id
+          state
+          city
+          pincode
+          building_detail
+          landmark
+          createdAt
+          updatedAt
+        }
+        createdAt
+        updatedAt
+      }
+      help_with
+      request_type
+      num_of_adults
+      num_of_children
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const onDeleteRequest = /* GraphQL */ `
+  subscription OnDeleteRequest {
+    onDeleteRequest {
+      id
+      name
+      details
+      contact_details {
+        id
+        phone_number
+        email_address
+        address {
+          id
+          state
+          city
+          pincode
+          building_detail
+          landmark
+          createdAt
+          updatedAt
+        }
+        createdAt
+        updatedAt
+      }
+      help_with
+      request_type
+      num_of_adults
+      num_of_children
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const onCreateDistributors = /* GraphQL */ `
+  subscription OnCreateDistributors {
+    onCreateDistributors {
+      id
+      name
+      details
+      isGovt
+      contact_details {
+        id
+        phone_number
+        email_address
+        address {
+          id
+          state
+          city
+          pincode
+          building_detail
+          landmark
+          createdAt
+          updatedAt
+        }
+        createdAt
+        updatedAt
+      }
+      request_type
+      cases_per_week
+      num_of_volunteers
+      link
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const onUpdateDistributors = /* GraphQL */ `
+  subscription OnUpdateDistributors {
+    onUpdateDistributors {
+      id
+      name
+      details
+      isGovt
+      contact_details {
+        id
+        phone_number
+        email_address
+        address {
+          id
+          state
+          city
+          pincode
+          building_detail
+          landmark
+          createdAt
+          updatedAt
+        }
+        createdAt
+        updatedAt
+      }
+      request_type
+      cases_per_week
+      num_of_volunteers
+      link
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const onDeleteDistributors = /* GraphQL */ `
+  subscription OnDeleteDistributors {
+    onDeleteDistributors {
+      id
+      name
+      details
+      isGovt
+      contact_details {
+        id
+        phone_number
+        email_address
+        address {
+          id
+          state
+          city
+          pincode
+          building_detail
+          landmark
+          createdAt
+          updatedAt
+        }
+        createdAt
+        updatedAt
+      }
+      request_type
+      cases_per_week
+      num_of_volunteers
+      link
+      createdAt
+      updatedAt
+    }
+  }
+`;
 export const onCreateCase = /* GraphQL */ `
   subscription OnCreateCase {
     onCreateCase {
       id
-      helpseeker {
+      description
+      request {
         id
         name
+        details
         contact_details {
           id
           phone_number
@@ -486,12 +686,13 @@ export const onCreateCase = /* GraphQL */ `
           createdAt
           updatedAt
         }
-        note
-        type
+        help_with
+        request_type
+        num_of_adults
+        num_of_children
         createdAt
         updatedAt
       }
-      description
       contact_details {
         id
         phone_number
@@ -517,8 +718,6 @@ export const onCreateCase = /* GraphQL */ `
         createdAt
         updatedAt
       }
-      num_of_adults
-      num_of_children
       priority
       status
       createdAt
@@ -530,9 +729,11 @@ export const onUpdateCase = /* GraphQL */ `
   subscription OnUpdateCase {
     onUpdateCase {
       id
-      helpseeker {
+      description
+      request {
         id
         name
+        details
         contact_details {
           id
           phone_number
@@ -540,12 +741,13 @@ export const onUpdateCase = /* GraphQL */ `
           createdAt
           updatedAt
         }
-        note
-        type
+        help_with
+        request_type
+        num_of_adults
+        num_of_children
         createdAt
         updatedAt
       }
-      description
       contact_details {
         id
         phone_number
@@ -571,8 +773,6 @@ export const onUpdateCase = /* GraphQL */ `
         createdAt
         updatedAt
       }
-      num_of_adults
-      num_of_children
       priority
       status
       createdAt
@@ -584,9 +784,11 @@ export const onDeleteCase = /* GraphQL */ `
   subscription OnDeleteCase {
     onDeleteCase {
       id
-      helpseeker {
+      description
+      request {
         id
         name
+        details
         contact_details {
           id
           phone_number
@@ -594,12 +796,13 @@ export const onDeleteCase = /* GraphQL */ `
           createdAt
           updatedAt
         }
-        note
-        type
+        help_with
+        request_type
+        num_of_adults
+        num_of_children
         createdAt
         updatedAt
       }
-      description
       contact_details {
         id
         phone_number
@@ -625,8 +828,6 @@ export const onDeleteCase = /* GraphQL */ `
         createdAt
         updatedAt
       }
-      num_of_adults
-      num_of_children
       priority
       status
       createdAt

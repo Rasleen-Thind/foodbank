@@ -225,15 +225,18 @@ export const getDonor = /* GraphQL */ `
       amount
       case {
         id
-        helpseeker {
+        description
+        request {
           id
           name
-          note
-          type
+          details
+          help_with
+          request_type
+          num_of_adults
+          num_of_children
           createdAt
           updatedAt
         }
-        description
         contact_details {
           id
           phone_number
@@ -249,8 +252,6 @@ export const getDonor = /* GraphQL */ `
           createdAt
           updatedAt
         }
-        num_of_adults
-        num_of_children
         priority
         status
         createdAt
@@ -283,8 +284,6 @@ export const listDonors = /* GraphQL */ `
         case {
           id
           description
-          num_of_adults
-          num_of_children
           priority
           status
           createdAt
@@ -297,13 +296,49 @@ export const listDonors = /* GraphQL */ `
     }
   }
 `;
-export const getCase = /* GraphQL */ `
-  query GetCase($id: ID!) {
-    getCase(id: $id) {
+export const getRequest = /* GraphQL */ `
+  query GetRequest($id: ID!) {
+    getRequest(id: $id) {
       id
-      helpseeker {
+      name
+      details
+      contact_details {
+        id
+        phone_number
+        email_address
+        address {
+          id
+          state
+          city
+          pincode
+          building_detail
+          landmark
+          createdAt
+          updatedAt
+        }
+        createdAt
+        updatedAt
+      }
+      help_with
+      request_type
+      num_of_adults
+      num_of_children
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const listRequests = /* GraphQL */ `
+  query ListRequests(
+    $filter: ModelRequestFilterInput
+    $limit: Int
+    $nextToken: String
+  ) {
+    listRequests(filter: $filter, limit: $limit, nextToken: $nextToken) {
+      items {
         id
         name
+        details
         contact_details {
           id
           phone_number
@@ -311,12 +346,103 @@ export const getCase = /* GraphQL */ `
           createdAt
           updatedAt
         }
-        note
-        type
+        help_with
+        request_type
+        num_of_adults
+        num_of_children
         createdAt
         updatedAt
       }
+      nextToken
+    }
+  }
+`;
+export const getDistributors = /* GraphQL */ `
+  query GetDistributors($id: ID!) {
+    getDistributors(id: $id) {
+      id
+      name
+      details
+      isGovt
+      contact_details {
+        id
+        phone_number
+        email_address
+        address {
+          id
+          state
+          city
+          pincode
+          building_detail
+          landmark
+          createdAt
+          updatedAt
+        }
+        createdAt
+        updatedAt
+      }
+      request_type
+      cases_per_week
+      num_of_volunteers
+      link
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const listDistributorss = /* GraphQL */ `
+  query ListDistributorss(
+    $filter: ModelDistributorsFilterInput
+    $limit: Int
+    $nextToken: String
+  ) {
+    listDistributorss(filter: $filter, limit: $limit, nextToken: $nextToken) {
+      items {
+        id
+        name
+        details
+        isGovt
+        contact_details {
+          id
+          phone_number
+          email_address
+          createdAt
+          updatedAt
+        }
+        request_type
+        cases_per_week
+        num_of_volunteers
+        link
+        createdAt
+        updatedAt
+      }
+      nextToken
+    }
+  }
+`;
+export const getCase = /* GraphQL */ `
+  query GetCase($id: ID!) {
+    getCase(id: $id) {
+      id
       description
+      request {
+        id
+        name
+        details
+        contact_details {
+          id
+          phone_number
+          email_address
+          createdAt
+          updatedAt
+        }
+        help_with
+        request_type
+        num_of_adults
+        num_of_children
+        createdAt
+        updatedAt
+      }
       contact_details {
         id
         phone_number
@@ -342,8 +468,6 @@ export const getCase = /* GraphQL */ `
         createdAt
         updatedAt
       }
-      num_of_adults
-      num_of_children
       priority
       status
       createdAt
@@ -360,15 +484,18 @@ export const listCases = /* GraphQL */ `
     listCases(filter: $filter, limit: $limit, nextToken: $nextToken) {
       items {
         id
-        helpseeker {
+        description
+        request {
           id
           name
-          note
-          type
+          details
+          help_with
+          request_type
+          num_of_adults
+          num_of_children
           createdAt
           updatedAt
         }
-        description
         contact_details {
           id
           phone_number
@@ -384,8 +511,6 @@ export const listCases = /* GraphQL */ `
           createdAt
           updatedAt
         }
-        num_of_adults
-        num_of_children
         priority
         status
         createdAt

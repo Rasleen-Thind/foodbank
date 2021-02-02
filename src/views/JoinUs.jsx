@@ -6,12 +6,11 @@ import {
 } from "react-bootstrap";
 
 import { Card } from "components/Card/Card.jsx";
-import AboutInfo from "components/AboutInfo.jsx";
-import AboutInfo1 from "components/AboutInfo1.jsx";
-import TeamInfo from "components/TeamInfo";
-import TeamMembers from "components/TeamMembers";
+import VolunteerCard from "components/JoinUs/VolunteerCard";
+import NGOCard from "components/JoinUs/NGOCard";
+import ProcessCard from "components/JoinUs/ProcessCard";
 
-class UserProfile extends Component {
+class JoinUs extends Component {
   render() {
     return (
       <div className="content">
@@ -19,18 +18,18 @@ class UserProfile extends Component {
           <Row>
             <Col md={6}>
               <Card
-                style={{textAligh : "center"}}
-                title="What is Foodbank?"
+                style={{textAlign : "center", }}
+                title="Volunteer"
                 content={
-                  <AboutInfo />
+                  <VolunteerCard />
                 }
               />
             </Col>
             <Col md={6}>
               <Card
-                title="How we work?"
+                title="Food distribution initiative"
                 content={
-                  <AboutInfo1 />
+                  <NGOCard />
                 }
               />
             </Col>
@@ -38,18 +37,17 @@ class UserProfile extends Component {
           <Row>
             <Col md={12}>
             <Card
-            title="Our Team"
+            title="Our Process"
                 content={
-              <TeamInfo />
+              <ProcessCard />
             }
               />
             </Col>
             </Row>
-          <TeamMembers/>
         </Grid>
       </div>
     );
   }
 }
 
-export default UserProfile;
+export default JoinUs;
