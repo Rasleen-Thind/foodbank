@@ -41,6 +41,15 @@ type Donor @model {
   case: Case @connection
 }
 
+type Request @model {
+  id: ID!
+  name: String!
+  contact_details: ContactDetails @connection
+  note: String!
+  amount: Int!
+  case: Case @connection
+}
+
 type Case @model {
   id: ID!
   helpseeker: HelpSeeker @connection
