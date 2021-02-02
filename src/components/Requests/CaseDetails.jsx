@@ -33,8 +33,7 @@ class CaseDetails extends Component {
             caseList.push(
                 <tr>
                     <td>{cases[i]['description']}</td>
-                    <td>{cases[i]['num_of_adults']}</td>
-                    <td>{cases[i]['num_of_children']}</td>
+                    <td>{cases[i]['request']['id']}</td>
                     <td>{cases[i]['priority'][0]}</td>
                     <td>{cases[i]['status'][0]}</td>
                     <td>{cases[i]['requirement_type']['whishlist_url']}</td>
@@ -52,8 +51,7 @@ class CaseDetails extends Component {
                     <thead>
                       <tr>
                           <th>Description</th>
-                          <th>No of Adults</th>
-                          <th>No of Children</th>
+                          <th> Request Id </th>
                           <th>Priority</th>
                           <th>Status</th>
                           <th>Whishlist Url</th>

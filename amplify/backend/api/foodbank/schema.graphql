@@ -67,7 +67,6 @@ type Case @model {
   id: ID!
   description: String! 
   request : Request @connection
-  contact_details: ContactDetails @connection
   requirement_type : Requirement  @connection
   priority: [Priority]
   status: [Status]

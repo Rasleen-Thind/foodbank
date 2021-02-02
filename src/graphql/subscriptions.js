@@ -324,13 +324,6 @@ export const onCreateDonor = /* GraphQL */ `
           createdAt
           updatedAt
         }
-        contact_details {
-          id
-          phone_number
-          email_address
-          createdAt
-          updatedAt
-        }
         requirement_type {
           id
           name
@@ -387,13 +380,6 @@ export const onUpdateDonor = /* GraphQL */ `
           createdAt
           updatedAt
         }
-        contact_details {
-          id
-          phone_number
-          email_address
-          createdAt
-          updatedAt
-        }
         requirement_type {
           id
           name
@@ -447,13 +433,6 @@ export const onDeleteDonor = /* GraphQL */ `
           request_type
           num_of_adults
           num_of_children
-          createdAt
-          updatedAt
-        }
-        contact_details {
-          id
-          phone_number
-          email_address
           createdAt
           updatedAt
         }
@@ -690,23 +669,6 @@ export const onCreateCase = /* GraphQL */ `
         createdAt
         updatedAt
       }
-      contact_details {
-        id
-        phone_number
-        email_address
-        address {
-          id
-          state
-          city
-          pincode
-          building_detail
-          landmark
-          createdAt
-          updatedAt
-        }
-        createdAt
-        updatedAt
-      }
       requirement_type {
         id
         name
@@ -745,23 +707,6 @@ export const onUpdateCase = /* GraphQL */ `
         createdAt
         updatedAt
       }
-      contact_details {
-        id
-        phone_number
-        email_address
-        address {
-          id
-          state
-          city
-          pincode
-          building_detail
-          landmark
-          createdAt
-          updatedAt
-        }
-        createdAt
-        updatedAt
-      }
       requirement_type {
         id
         name
@@ -797,23 +742,6 @@ export const onDeleteCase = /* GraphQL */ `
         request_type
         num_of_adults
         num_of_children
-        createdAt
-        updatedAt
-      }
-      contact_details {
-        id
-        phone_number
-        email_address
-        address {
-          id
-          state
-          city
-          pincode
-          building_detail
-          landmark
-          createdAt
-          updatedAt
-        }
         createdAt
         updatedAt
       }
