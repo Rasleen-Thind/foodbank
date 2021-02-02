@@ -625,12 +625,12 @@ export const deleteRequest = /* GraphQL */ `
     }
   }
 `;
-export const createDistributors = /* GraphQL */ `
-  mutation CreateDistributors(
-    $input: CreateDistributorsInput!
-    $condition: ModelDistributorsConditionInput
+export const createDistributor = /* GraphQL */ `
+  mutation CreateDistributor(
+    $input: CreateDistributorInput!
+    $condition: ModelDistributorConditionInput
   ) {
-    createDistributors(input: $input, condition: $condition) {
+    createDistributor(input: $input, condition: $condition) {
       id
       name
       details
@@ -661,12 +661,12 @@ export const createDistributors = /* GraphQL */ `
     }
   }
 `;
-export const updateDistributors = /* GraphQL */ `
-  mutation UpdateDistributors(
-    $input: UpdateDistributorsInput!
-    $condition: ModelDistributorsConditionInput
+export const updateDistributor = /* GraphQL */ `
+  mutation UpdateDistributor(
+    $input: UpdateDistributorInput!
+    $condition: ModelDistributorConditionInput
   ) {
-    updateDistributors(input: $input, condition: $condition) {
+    updateDistributor(input: $input, condition: $condition) {
       id
       name
       details
@@ -697,12 +697,12 @@ export const updateDistributors = /* GraphQL */ `
     }
   }
 `;
-export const deleteDistributors = /* GraphQL */ `
-  mutation DeleteDistributors(
-    $input: DeleteDistributorsInput!
-    $condition: ModelDistributorsConditionInput
+export const deleteDistributor = /* GraphQL */ `
+  mutation DeleteDistributor(
+    $input: DeleteDistributorInput!
+    $condition: ModelDistributorConditionInput
   ) {
-    deleteDistributors(input: $input, condition: $condition) {
+    deleteDistributor(input: $input, condition: $condition) {
       id
       name
       details

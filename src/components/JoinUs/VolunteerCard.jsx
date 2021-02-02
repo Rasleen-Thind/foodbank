@@ -1,5 +1,6 @@
 import React from "react";
 import Button from "components/CustomButton/CustomButton.jsx";
+import VolunteerAddForm from "./VolunteerAddForm";
 import { Modal} from "react-bootstrap";
 
 function VolunteerCard() { 
@@ -23,7 +24,7 @@ function VolunteerCard() {
                         <Modal.Title style={{ color: 'black' }}>Volunteer</Modal.Title>
                     </Modal.Header>
                     <Modal.Body style={{ color: 'black' }}>
-                    "Volunteer"
+                    <VolunteerAddForm/>
                     </Modal.Body>
                     <Modal.Footer >
                         <Button variant="secondary" onClick={handleClose}>

@@ -52,7 +52,7 @@ type Request @model {
   num_of_children: Int!
 }
 
-type Distributors @model {
+type Distributor @model {
   id: ID!
   name: String!
   details: String!

@@ -357,9 +357,9 @@ export const listRequests = /* GraphQL */ `
     }
   }
 `;
-export const getDistributors = /* GraphQL */ `
-  query GetDistributors($id: ID!) {
-    getDistributors(id: $id) {
+export const getDistributor = /* GraphQL */ `
+  query GetDistributor($id: ID!) {
+    getDistributor(id: $id) {
       id
       name
       details
@@ -390,13 +390,13 @@ export const getDistributors = /* GraphQL */ `
     }
   }
 `;
-export const listDistributorss = /* GraphQL */ `
-  query ListDistributorss(
-    $filter: ModelDistributorsFilterInput
+export const listDistributors = /* GraphQL */ `
+  query ListDistributors(
+    $filter: ModelDistributorFilterInput
     $limit: Int
     $nextToken: String
   ) {
-    listDistributorss(filter: $filter, limit: $limit, nextToken: $nextToken) {
+    listDistributors(filter: $filter, limit: $limit, nextToken: $nextToken) {
       items {
         id
         name

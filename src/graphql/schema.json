@@ -387,7 +387,7 @@
           "isDeprecated" : false,
           "deprecationReason" : null
         }, {
-          "name" : "getDistributors",
+          "name" : "getDistributor",
           "description" : null,
           "args" : [ {
             "name" : "id",
@@ -405,20 +405,20 @@
           } ],
           "type" : {
             "kind" : "OBJECT",
-            "name" : "Distributors",
+            "name" : "Distributor",
             "ofType" : null
           },
           "isDeprecated" : false,
           "deprecationReason" : null
         }, {
-          "name" : "listDistributorss",
+          "name" : "listDistributors",
           "description" : null,
           "args" : [ {
             "name" : "filter",
             "description" : null,
             "type" : {
               "kind" : "INPUT_OBJECT",
-              "name" : "ModelDistributorsFilterInput",
+              "name" : "ModelDistributorFilterInput",
               "ofType" : null
             },
             "defaultValue" : null
@@ -443,7 +443,7 @@
           } ],
           "type" : {
             "kind" : "OBJECT",
-            "name" : "ModelDistributorsConnection",
+            "name" : "ModelDistributorConnection",
             "ofType" : null
           },
           "isDeprecated" : false,
@@ -2891,7 +2891,7 @@
         "possibleTypes" : null
       }, {
         "kind" : "OBJECT",
-        "name" : "Distributors",
+        "name" : "Distributor",
         "description" : null,
         "fields" : [ {
           "name" : "id",
@@ -3061,7 +3061,7 @@
         "possibleTypes" : null
       }, {
         "kind" : "OBJECT",
-        "name" : "ModelDistributorsConnection",
+        "name" : "ModelDistributorConnection",
         "description" : null,
         "fields" : [ {
           "name" : "items",
@@ -3072,7 +3072,7 @@
             "name" : null,
             "ofType" : {
               "kind" : "OBJECT",
-              "name" : "Distributors",
+              "name" : "Distributor",
               "ofType" : null
             }
           },
@@ -3096,7 +3096,7 @@
         "possibleTypes" : null
       }, {
         "kind" : "INPUT_OBJECT",
-        "name" : "ModelDistributorsFilterInput",
+        "name" : "ModelDistributorFilterInput",
         "description" : null,
         "fields" : null,
         "inputFields" : [ {
@@ -3179,7 +3179,7 @@
             "name" : null,
             "ofType" : {
               "kind" : "INPUT_OBJECT",
-              "name" : "ModelDistributorsFilterInput",
+              "name" : "ModelDistributorFilterInput",
               "ofType" : null
             }
           },
@@ -3192,7 +3192,7 @@
             "name" : null,
             "ofType" : {
               "kind" : "INPUT_OBJECT",
-              "name" : "ModelDistributorsFilterInput",
+              "name" : "ModelDistributorFilterInput",
               "ofType" : null
             }
           },
@@ -3202,7 +3202,7 @@
           "description" : null,
           "type" : {
             "kind" : "INPUT_OBJECT",
-            "name" : "ModelDistributorsFilterInput",
+            "name" : "ModelDistributorFilterInput",
             "ofType" : null
           },
           "defaultValue" : null
@@ -4190,7 +4190,7 @@
           "isDeprecated" : false,
           "deprecationReason" : null
         }, {
-          "name" : "createDistributors",
+          "name" : "createDistributor",
           "description" : null,
           "args" : [ {
             "name" : "input",
@@ -4200,7 +4200,7 @@
               "name" : null,
               "ofType" : {
                 "kind" : "INPUT_OBJECT",
-                "name" : "CreateDistributorsInput",
+                "name" : "CreateDistributorInput",
                 "ofType" : null
               }
             },
@@ -4210,20 +4210,20 @@
             "description" : null,
             "type" : {
               "kind" : "INPUT_OBJECT",
-              "name" : "ModelDistributorsConditionInput",
+              "name" : "ModelDistributorConditionInput",
               "ofType" : null
             },
             "defaultValue" : null
           } ],
           "type" : {
             "kind" : "OBJECT",
-            "name" : "Distributors",
+            "name" : "Distributor",
             "ofType" : null
           },
           "isDeprecated" : false,
           "deprecationReason" : null
         }, {
-          "name" : "updateDistributors",
+          "name" : "updateDistributor",
           "description" : null,
           "args" : [ {
             "name" : "input",
@@ -4233,7 +4233,7 @@
               "name" : null,
               "ofType" : {
                 "kind" : "INPUT_OBJECT",
-                "name" : "UpdateDistributorsInput",
+                "name" : "UpdateDistributorInput",
                 "ofType" : null
               }
             },
@@ -4243,20 +4243,20 @@
             "description" : null,
             "type" : {
               "kind" : "INPUT_OBJECT",
-              "name" : "ModelDistributorsConditionInput",
+              "name" : "ModelDistributorConditionInput",
               "ofType" : null
             },
             "defaultValue" : null
           } ],
           "type" : {
             "kind" : "OBJECT",
-            "name" : "Distributors",
+            "name" : "Distributor",
             "ofType" : null
           },
           "isDeprecated" : false,
           "deprecationReason" : null
         }, {
-          "name" : "deleteDistributors",
+          "name" : "deleteDistributor",
           "description" : null,
           "args" : [ {
             "name" : "input",
@@ -4266,7 +4266,7 @@
               "name" : null,
               "ofType" : {
                 "kind" : "INPUT_OBJECT",
-                "name" : "DeleteDistributorsInput",
+                "name" : "DeleteDistributorInput",
                 "ofType" : null
               }
             },
@@ -4276,14 +4276,14 @@
             "description" : null,
             "type" : {
               "kind" : "INPUT_OBJECT",
-              "name" : "ModelDistributorsConditionInput",
+              "name" : "ModelDistributorConditionInput",
               "ofType" : null
             },
             "defaultValue" : null
           } ],
           "type" : {
             "kind" : "OBJECT",
-            "name" : "Distributors",
+            "name" : "Distributor",
             "ofType" : null
           },
           "isDeprecated" : false,
@@ -5957,7 +5957,7 @@
         "possibleTypes" : null
       }, {
         "kind" : "INPUT_OBJECT",
-        "name" : "CreateDistributorsInput",
+        "name" : "CreateDistributorInput",
         "description" : null,
         "fields" : null,
         "inputFields" : [ {
@@ -6061,7 +6061,7 @@
           },
           "defaultValue" : null
         }, {
-          "name" : "distributorsContact_detailsId",
+          "name" : "distributorContact_detailsId",
           "description" : null,
           "type" : {
             "kind" : "SCALAR",
@@ -6075,7 +6075,7 @@
         "possibleTypes" : null
       }, {
         "kind" : "INPUT_OBJECT",
-        "name" : "ModelDistributorsConditionInput",
+        "name" : "ModelDistributorConditionInput",
         "description" : null,
         "fields" : null,
         "inputFields" : [ {
@@ -6149,7 +6149,7 @@
             "name" : null,
             "ofType" : {
               "kind" : "INPUT_OBJECT",
-              "name" : "ModelDistributorsConditionInput",
+              "name" : "ModelDistributorConditionInput",
               "ofType" : null
             }
           },
@@ -6162,7 +6162,7 @@
             "name" : null,
             "ofType" : {
               "kind" : "INPUT_OBJECT",
-              "name" : "ModelDistributorsConditionInput",
+              "name" : "ModelDistributorConditionInput",
               "ofType" : null
             }
           },
@@ -6172,7 +6172,7 @@
           "description" : null,
           "type" : {
             "kind" : "INPUT_OBJECT",
-            "name" : "ModelDistributorsConditionInput",
+            "name" : "ModelDistributorConditionInput",
             "ofType" : null
           },
           "defaultValue" : null
@@ -6182,7 +6182,7 @@
         "possibleTypes" : null
       }, {
         "kind" : "INPUT_OBJECT",
-        "name" : "UpdateDistributorsInput",
+        "name" : "UpdateDistributorInput",
         "description" : null,
         "fields" : null,
         "inputFields" : [ {
@@ -6262,7 +6262,7 @@
           },
           "defaultValue" : null
         }, {
-          "name" : "distributorsContact_detailsId",
+          "name" : "distributorContact_detailsId",
           "description" : null,
           "type" : {
             "kind" : "SCALAR",
@@ -6276,7 +6276,7 @@
         "possibleTypes" : null
       }, {
         "kind" : "INPUT_OBJECT",
-        "name" : "DeleteDistributorsInput",
+        "name" : "DeleteDistributorInput",
         "description" : null,
         "fields" : null,
         "inputFields" : [ {
@@ -6947,34 +6947,34 @@
           "isDeprecated" : false,
           "deprecationReason" : null
         }, {
-          "name" : "onCreateDistributors",
+          "name" : "onCreateDistributor",
           "description" : null,
           "args" : [ ],
           "type" : {
             "kind" : "OBJECT",
-            "name" : "Distributors",
+            "name" : "Distributor",
             "ofType" : null
           },
           "isDeprecated" : false,
           "deprecationReason" : null
         }, {
-          "name" : "onUpdateDistributors",
+          "name" : "onUpdateDistributor",
           "description" : null,
           "args" : [ ],
           "type" : {
             "kind" : "OBJECT",
-            "name" : "Distributors",
+            "name" : "Distributor",
             "ofType" : null
           },
           "isDeprecated" : false,
           "deprecationReason" : null
         }, {
-          "name" : "onDeleteDistributors",
+          "name" : "onDeleteDistributor",
           "description" : null,
           "args" : [ ],
           "type" : {
             "kind" : "OBJECT",
-            "name" : "Distributors",
+            "name" : "Distributor",
             "ofType" : null
           },
           "isDeprecated" : false,
@@ -7049,6 +7049,25 @@
         "inputFields" : null,
         "interfaces" : [ ],
         "enumValues" : null,
+        "possibleTypes" : null
+      }, {
+        "kind" : "ENUM",
+        "name" : "ModelSortDirection",
+        "description" : null,
+        "fields" : null,
+        "inputFields" : null,
+        "interfaces" : null,
+        "enumValues" : [ {
+          "name" : "ASC",
+          "description" : null,
+          "isDeprecated" : false,
+          "deprecationReason" : null
+        }, {
+          "name" : "DESC",
+          "description" : null,
+          "isDeprecated" : false,
+          "deprecationReason" : null
+        } ],
         "possibleTypes" : null
       }, {
         "kind" : "INPUT_OBJECT",
@@ -7152,25 +7171,6 @@
         "inputFields" : null,
         "interfaces" : null,
         "enumValues" : null,
-        "possibleTypes" : null
-      }, {
-        "kind" : "ENUM",
-        "name" : "ModelSortDirection",
-        "description" : null,
-        "fields" : null,
-        "inputFields" : null,
-        "interfaces" : null,
-        "enumValues" : [ {
-          "name" : "ASC",
-          "description" : null,
-          "isDeprecated" : false,
-          "deprecationReason" : null
-        }, {
-          "name" : "DESC",
-          "description" : null,
-          "isDeprecated" : false,
-          "deprecationReason" : null
-        } ],
         "possibleTypes" : null
       }, {
         "kind" : "OBJECT",
@@ -7956,6 +7956,23 @@
         "onFragment" : false,
         "onField" : true
       }, {
+        "name" : "deprecated",
+        "description" : null,
+        "locations" : [ "FIELD_DEFINITION", "ENUM_VALUE" ],
+        "args" : [ {
+          "name" : "reason",
+          "description" : null,
+          "type" : {
+            "kind" : "SCALAR",
+            "name" : "String",
+            "ofType" : null
+          },
+          "defaultValue" : "\"No longer supported\""
+        } ],
+        "onOperation" : false,
+        "onFragment" : false,
+        "onField" : false
+      }, {
         "name" : "aws_publish",
         "description" : "Tells the service which subscriptions will be published to when this mutation is called. This directive is deprecated use @aws_susbscribe directive instead.",
         "locations" : [ "FIELD_DEFINITION" ],
@@ -8002,23 +8019,6 @@
         "description" : "Tells the service this field/object has access authorized by an OIDC token.",
         "locations" : [ "OBJECT", "FIELD_DEFINITION" ],
         "args" : [ ],
-        "onOperation" : false,
-        "onFragment" : false,
-        "onField" : false
-      }, {
-        "name" : "deprecated",
-        "description" : null,
-        "locations" : [ "FIELD_DEFINITION", "ENUM_VALUE" ],
-        "args" : [ {
-          "name" : "reason",
-          "description" : null,
-          "type" : {
-            "kind" : "SCALAR",
-            "name" : "String",
-            "ofType" : null
-          },
-          "defaultValue" : "\"No longer supported\""
-        } ],
         "onOperation" : false,
         "onFragment" : false,
         "onField" : false

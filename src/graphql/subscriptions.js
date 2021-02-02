@@ -571,9 +571,9 @@ export const onDeleteRequest = /* GraphQL */ `
     }
   }
 `;
-export const onCreateDistributors = /* GraphQL */ `
-  subscription OnCreateDistributors {
-    onCreateDistributors {
+export const onCreateDistributor = /* GraphQL */ `
+  subscription OnCreateDistributor {
+    onCreateDistributor {
       id
       name
       details
@@ -604,9 +604,9 @@ export const onCreateDistributors = /* GraphQL */ `
     }
   }
 `;
-export const onUpdateDistributors = /* GraphQL */ `
-  subscription OnUpdateDistributors {
-    onUpdateDistributors {
+export const onUpdateDistributor = /* GraphQL */ `
+  subscription OnUpdateDistributor {
+    onUpdateDistributor {
       id
       name
       details
@@ -637,9 +637,9 @@ export const onUpdateDistributors = /* GraphQL */ `
     }
   }
 `;
-export const onDeleteDistributors = /* GraphQL */ `
-  subscription OnDeleteDistributors {
-    onDeleteDistributors {
+export const onDeleteDistributor = /* GraphQL */ `
+  subscription OnDeleteDistributor {
+    onDeleteDistributor {
       id
       name
       details
