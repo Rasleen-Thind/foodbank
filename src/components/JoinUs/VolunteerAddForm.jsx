@@ -1,33 +1,43 @@
 /* src/App.js */
-import React, {useState } from 'react'
-import { FormGroup, Form, ControlLabel, FormControl, Button} from 'react-bootstrap';
-import { API, graphqlOperation } from 'aws-amplify'
+import React, { useState } from 'react'
+import { FormGroup, Form, ControlLabel, FormControl, Button } from 'react-bootstrap';
 import Select from 'react-select';
-import {createAddress, createContactDetails, createRequest} from 'graphql/mutations';
+import { API, graphqlOperation } from 'aws-amplify'
+import {createAddress, createContactDetails, createVolunteer} from 'graphql/mutations';
 
-const requestOptions = [
-    { value: 'cooked_meal', label: 'Cooked Meal' },
-    { value: 'dry_ration', label: 'Dry Ration' }
+const skillOptions = [
+    { value: 'Marketing', label: 'Marketing and Promotion' },
+    { value: 'Online Volunteer', label: 'Online volunteer - Connect help seekers to NGOs and donors' },
+    { value: 'Digital Volunteer', label: 'Digital volunteer - share our message - once per week' },
+    { value: 'Product management', label: 'Product management' },
+    { value: 'Social media management', label: 'Social media management' },
+    { value: 'Web Development', label: 'Web Development' },
+    { value: 'Others', label: 'Others' }
 ];
 
-const requestForOptions = [
-    { value: 'self', label: 'For Self' },
-    { value: 'someone_else', label: 'For Someone Else' }
+const languageOptions = [
+    { value: 'Bengali', label: 'Bengali' },
+    { value: 'English', label: 'English' },
+    { value: 'Hindi', label: 'Hindi' },
+    { value: 'Marathi', label: 'Marathi' },
+    { value: 'Punjabi', label: 'Punjabi' },
+    { value: 'Gujrati', label: 'Gujrati' },
+    { value: 'Telugu', label: 'Telugu' },
+    
 ];
 
 var addressState = {};
 var contactDetailState = {};
-var requestState = {};
+var volunteerState = {};
 
-const RequestFoodForm = () => {
+const VolunteerAddForm = () => {
 
     const [formState, setFormState] = useState({})
-
     function setInput(key, value) {
         setFormState({ ...formState, [key]: value })
     }
 
-    async function addRequest() {
+    async function addVolunteer() {
         try {
             addressState = {
                 state : formState['state'],
@@ -44,21 +54,20 @@ const RequestFoodForm = () => {
                 contactDetailsAddressId : address['data']['createAddress']['id']
             };
             var contactDetail = await API.graphql(graphqlOperation(createContactDetails, { input: contactDetailState}));
-            requestState = {
+            console.log(contactDetail);
+            volunteerState = {
                 name: formState['name'],
-                num_of_adults: formState['num_of_adults'],
-                num_of_children: formState['num_of_children'],
-                details : formState['details'],
-                request_type: formState['request_type']['value'],
-                help_with: formState['help_with']['value'],
-                requestContact_detailsId: contactDetail['data']['createContactDetails']['id']
-           
+                skill_type: formState['skill_type']['value'],
+                language: formState['language']['value'],
+                volunteerContact_detailsId: contactDetail['data']['createContactDetails']['id'],
+                num_of_hrs_per_week: formState['num_of_hrs_per_week'],
+                note: formState['note'],
             }
-            console.log(requestState);
-            var abc = await API.graphql(graphqlOperation( createRequest, { input: requestState }));
+            console.log(volunteerState);
+            var abc = await API.graphql(graphqlOperation(createVolunteer, { input: volunteerState }));
             console.log(abc);
         } catch (err) {
-            console.log('error creating donor:', err)
+            console.log('error creating volunteer:', err)
         }
     }
 
@@ -66,25 +75,7 @@ const RequestFoodForm = () => {
         <Form>
             <FormGroup>
                 <ControlLabel>Name</ControlLabel>
-                <FormControl onChange={event => setInput('name', event.target.value)} placeholder= "Name"/>
-            </FormGroup>
-            <FormGroup>
-                <ControlLabel>Detail</ControlLabel>
-                <FormControl onChange={event => setInput('details', event.target.value)} placeholder="Any additional information regarding your case" />
-            </FormGroup>
-            <FormGroup controlId="caseAddForm.ControlSelect1">
-                <ControlLabel>Help With</ControlLabel>
-                <Select
-                    onChange={selectedOption => setInput('help_with', selectedOption)}
-                    options={requestOptions}
-                />
-            </FormGroup>
-            <FormGroup>
-                <ControlLabel>Request For</ControlLabel>
-                <Select
-                    onChange={selectedOption => setInput('request_type', selectedOption)}
-                    options={requestForOptions}
-                />
+                <FormControl onChange={event => setInput('name', event.target.value)} placeholder="Description" />
             </FormGroup>
             <FormGroup>
                 <ControlLabel>Buildling/Flat no</ControlLabel>
@@ -115,16 +106,30 @@ const RequestFoodForm = () => {
                 <FormControl onChange={event => setInput('email_address', event.target.value)} placeholder="email_address" />
             </FormGroup>
             <FormGroup>
-                <ControlLabel>No of Adults</ControlLabel>
-                <FormControl onChange={event => setInput('num_of_adults', event.target.value)} placeholder="Number of adults" />
+                <ControlLabel>Availability per week</ControlLabel>
+                <FormControl onChange={event => setInput('num_of_hrs_per_week', event.target.value)} placeholder="num_of_hrs_per_week" />
+            </FormGroup>
+            <FormGroup controlId="caseAddForm.ControlSelect1">
+                <ControlLabel>Skills</ControlLabel>
+                <Select
+                    onChange={selectedOption => setInput('skill_type', selectedOption)}
+                    options={skillOptions}
+                />
             </FormGroup>
             <FormGroup>
-                <ControlLabel>No of Childrens</ControlLabel>
-                <FormControl onChange={event => setInput('num_of_children', event.target.value)} placeholder="Number of children" />
+                <ControlLabel>Language</ControlLabel>
+                <Select
+                    onChange={selectedOption => setInput('language', selectedOption)}
+                    options={languageOptions}
+                />
             </FormGroup>
-            <Button variant="primary" onClick={addRequest}>Create</Button> 
+            <FormGroup>
+                <ControlLabel>Note</ControlLabel>
+                <FormControl onChange={event => setInput('note', event.target.value)} placeholder="note" />
+            </FormGroup>
+            <Button variant="primary" onClick={addVolunteer}>Create</Button>
         </Form>
     )
 }
 
-export default RequestFoodForm;
+export default VolunteerAddForm;

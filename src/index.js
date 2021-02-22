@@ -17,7 +17,8 @@
 */
 import React from "react";
 import ReactDOM from "react-dom";
-
+import awsconfig from './aws-exports';
+import Amplify from "aws-amplify";
 import { BrowserRouter, Route, Switch, Redirect } from "react-router-dom";
 
 import "bootstrap/dist/css/bootstrap.min.css";
@@ -27,6 +28,8 @@ import "./assets/css/demo.css";
 import "./assets/css/pe-icon-7-stroke.css";
 
 import AdminLayout from "layouts/Admin.jsx";
+
+Amplify.configure(awsconfig);
 
 ReactDOM.render(
   <BrowserRouter>
