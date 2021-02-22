@@ -2,6 +2,8 @@ import { Image , Modal} from "react-bootstrap";
 import homepage from "assets/img/blue-home-page.jpg";
 import React, { Component } from "react";
 import Button from "components/CustomButton/CustomButton.jsx";
+import CaseAddForm from "./Requests/CaseAddForm";
+import DonorAddForm from "./Donor/DonorAddForm";
 import RequestFoodForm from "./RequestFoodForm";
 
 var textStyle = {
@@ -13,8 +15,11 @@ var textStyle = {
 function DashboardImage() { 
 
     const [show, setShow] = React.useState(false);
+    const [help_show, setHelpShow] = React.useState(false);
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
+    const handleHelpClose = () => setHelpShow(false);
+    const handleHelpShow = () => setHelpShow(true);
 
     return (
         <div style={{ width: 'auto' }}>
@@ -50,13 +55,33 @@ function DashboardImage() {
                                         Close
                                     </Button>
                                 </Modal.Footer>
-
                             </Modal>
                             </>
                         &emsp;
-                        <Button bsStyle="neutral" pullLeft fill >
-                           I want to Help
+                        <>
+                            <Button bsStyle="neutral" pullLeft fill onClick={handleHelpShow} >
+                                I want to help
                         </Button>
+                            <Modal
+                                show={help_show}
+                                onHide={handleHelpClose}
+                                backdrop="static"
+                                keyboard={false}
+                            >
+                                <Modal.Header closeButton>
+                                    <Modal.Title style={{ color: 'black' }}>Donor</Modal.Title>
+                                </Modal.Header>
+                                <Modal.Body style={{ color: 'black' }}>
+                                <DonorAddForm />
+                                </Modal.Body>
+                                <Modal.Footer >
+                                    <Button variant="secondary" onClick={handleHelpClose}>
+                                        Close
+                                    </Button>
+                                </Modal.Footer>
+
+                            </Modal>
+                            </>
                         </div>
                     </div>
                 </div>

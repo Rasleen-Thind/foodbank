@@ -1,33 +1,21 @@
 /* src/App.js */
-import React, {useState } from 'react'
-import { FormGroup, Form, ControlLabel, FormControl, Button} from 'react-bootstrap';
+import React, { useState } from 'react'
+import { FormGroup, Form, ControlLabel, FormControl, Button } from 'react-bootstrap';
 import { API, graphqlOperation } from 'aws-amplify'
-import Select from 'react-select';
-import {createAddress, createContactDetails, createRequest} from 'graphql/mutations';
+import { createDonor, createAddress, createContactDetails} from 'graphql/mutations';
 
-const requestOptions = [
-    { value: 'cooked_meal', label: 'Cooked Meal' },
-    { value: 'dry_ration', label: 'Dry Ration' }
-];
-
-const requestForOptions = [
-    { value: 'self', label: 'For Self' },
-    { value: 'someone_else', label: 'For Someone Else' }
-];
-
+var donorState = {};
 var addressState = {};
-var contactDetailState = {};
-var requestState = {};
+var contactDetailState= {};
 
-const RequestFoodForm = () => {
+const DonorAddForm = () => {
 
-    const [formState, setFormState] = useState({})
-
+    const [formState, setFormState] = useState({});
     function setInput(key, value) {
         setFormState({ ...formState, [key]: value })
     }
 
-    async function addRequest() {
+    async function addDonor() {
         try {
             addressState = {
                 state : formState['state'],
@@ -44,18 +32,15 @@ const RequestFoodForm = () => {
                 contactDetailsAddressId : address['data']['createAddress']['id']
             };
             var contactDetail = await API.graphql(graphqlOperation(createContactDetails, { input: contactDetailState}));
-            requestState = {
+            donorState = {
                 name: formState['name'],
-                num_of_adults: formState['num_of_adults'],
-                num_of_children: formState['num_of_children'],
-                details : formState['details'],
-                request_type: formState['request_type']['value'],
-                help_with: formState['help_with']['value'],
-                requestContact_detailsId: contactDetail['data']['createContactDetails']['id']
+                amount: formState['amount'],
+                note : formState['note'],
+                donorContact_detailsId: contactDetail['data']['createContactDetails']['id']
            
             }
-            console.log(requestState);
-            var abc = await API.graphql(graphqlOperation( createRequest, { input: requestState }));
+            console.log(donorState);
+            var abc = await API.graphql(graphqlOperation(createDonor, { input: donorState }));
             console.log(abc);
         } catch (err) {
             console.log('error creating donor:', err)
@@ -66,25 +51,7 @@ const RequestFoodForm = () => {
         <Form>
             <FormGroup>
                 <ControlLabel>Name</ControlLabel>
-                <FormControl onChange={event => setInput('name', event.target.value)} placeholder= "Name"/>
-            </FormGroup>
-            <FormGroup>
-                <ControlLabel>Detail</ControlLabel>
-                <FormControl onChange={event => setInput('details', event.target.value)} placeholder="Any additional information regarding your case" />
-            </FormGroup>
-            <FormGroup controlId="caseAddForm.ControlSelect1">
-                <ControlLabel>Help With</ControlLabel>
-                <Select
-                    onChange={selectedOption => setInput('help_with', selectedOption)}
-                    options={requestOptions}
-                />
-            </FormGroup>
-            <FormGroup>
-                <ControlLabel>Request For</ControlLabel>
-                <Select
-                    onChange={selectedOption => setInput('request_type', selectedOption)}
-                    options={requestForOptions}
-                />
+                <FormControl onChange={event => setInput('name', event.target.value)} placeholder="Name" />
             </FormGroup>
             <FormGroup>
                 <ControlLabel>Buildling/Flat no</ControlLabel>
@@ -115,16 +82,16 @@ const RequestFoodForm = () => {
                 <FormControl onChange={event => setInput('email_address', event.target.value)} placeholder="email_address" />
             </FormGroup>
             <FormGroup>
-                <ControlLabel>No of Adults</ControlLabel>
-                <FormControl onChange={event => setInput('num_of_adults', event.target.value)} placeholder="Number of adults" />
+                <ControlLabel>Amount</ControlLabel>
+                <FormControl onChange={event => setInput('amount', event.target.value)} placeholder="Amount" />
             </FormGroup>
             <FormGroup>
-                <ControlLabel>No of Childrens</ControlLabel>
-                <FormControl onChange={event => setInput('num_of_children', event.target.value)} placeholder="Number of children" />
+                <ControlLabel>Note</ControlLabel>
+                <FormControl onChange={event => setInput('note', event.target.value)} placeholder="note" />
             </FormGroup>
-            <Button variant="primary" onClick={addRequest}>Create</Button> 
+            <Button variant="primary" onClick={addDonor}>Create</Button>
         </Form>
     )
 }
 
-export default RequestFoodForm;
+export default DonorAddForm;

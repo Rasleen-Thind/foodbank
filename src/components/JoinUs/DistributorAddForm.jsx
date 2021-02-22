@@ -1,33 +1,28 @@
 /* src/App.js */
-import React, {useState } from 'react'
-import { FormGroup, Form, ControlLabel, FormControl, Button} from 'react-bootstrap';
-import { API, graphqlOperation } from 'aws-amplify'
+import React, { useState } from 'react'
+import { FormGroup, Form, ControlLabel, FormControl, Button } from 'react-bootstrap';
 import Select from 'react-select';
-import {createAddress, createContactDetails, createRequest} from 'graphql/mutations';
+import { API, graphqlOperation } from 'aws-amplify'
+import {createAddress, createContactDetails, createDistributor} from 'graphql/mutations';
+import Checkbox from "components/CustomCheckbox/CustomCheckbox.jsx";
 
 const requestOptions = [
     { value: 'cooked_meal', label: 'Cooked Meal' },
     { value: 'dry_ration', label: 'Dry Ration' }
 ];
 
-const requestForOptions = [
-    { value: 'self', label: 'For Self' },
-    { value: 'someone_else', label: 'For Someone Else' }
-];
-
 var addressState = {};
 var contactDetailState = {};
-var requestState = {};
+var distributorState = {};
 
-const RequestFoodForm = () => {
+const DistributorAddForm = () => {
 
     const [formState, setFormState] = useState({})
-
     function setInput(key, value) {
         setFormState({ ...formState, [key]: value })
     }
 
-    async function addRequest() {
+    async function addDistributor() {
         try {
             addressState = {
                 state : formState['state'],
@@ -44,21 +39,20 @@ const RequestFoodForm = () => {
                 contactDetailsAddressId : address['data']['createAddress']['id']
             };
             var contactDetail = await API.graphql(graphqlOperation(createContactDetails, { input: contactDetailState}));
-            requestState = {
+            distributorState = {
                 name: formState['name'],
-                num_of_adults: formState['num_of_adults'],
-                num_of_children: formState['num_of_children'],
-                details : formState['details'],
                 request_type: formState['request_type']['value'],
-                help_with: formState['help_with']['value'],
-                requestContact_detailsId: contactDetail['data']['createContactDetails']['id']
-           
+                distributorContact_detailsId: contactDetail['data']['createContactDetails']['id'],
+                num_of_hrs_per_week: formState['num_of_hrs_per_week'],
+                details: formState['note'],
+                cases_per_week: formState['cases_per_week'],
+                num_of_volunteers : formState['num_of_volunteers'],
+                link : formState['link']
             }
-            console.log(requestState);
-            var abc = await API.graphql(graphqlOperation( createRequest, { input: requestState }));
+            var abc = await API.graphql(graphqlOperation(createDistributor, { input: distributorState }));
             console.log(abc);
         } catch (err) {
-            console.log('error creating donor:', err)
+            console.log('error creating Distributor:', err)
         }
     }
 
@@ -66,26 +60,19 @@ const RequestFoodForm = () => {
         <Form>
             <FormGroup>
                 <ControlLabel>Name</ControlLabel>
-                <FormControl onChange={event => setInput('name', event.target.value)} placeholder= "Name"/>
+                <FormControl onChange={event => setInput('name', event.target.value)} placeholder="Description" />
             </FormGroup>
             <FormGroup>
-                <ControlLabel>Detail</ControlLabel>
-                <FormControl onChange={event => setInput('details', event.target.value)} placeholder="Any additional information regarding your case" />
+                <ControlLabel>Tell Us about yourself</ControlLabel>
+                <FormControl onChange={event => setInput('note', event.target.value)} placeholder="note" />
             </FormGroup>
-            <FormGroup controlId="caseAddForm.ControlSelect1">
-                <ControlLabel>Help With</ControlLabel>
-                <Select
-                    onChange={selectedOption => setInput('help_with', selectedOption)}
-                    options={requestOptions}
-                />
-            </FormGroup>
-            <FormGroup>
-                <ControlLabel>Request For</ControlLabel>
-                <Select
-                    onChange={selectedOption => setInput('request_type', selectedOption)}
-                    options={requestForOptions}
-                />
-            </FormGroup>
+            {/* <FormGroup>
+                <ControlLabel>Govt operated organisation? </ControlLabel>
+            <Checkbox
+              number="123"
+              isChecked={false}
+            />
+             </FormGroup> */}
             <FormGroup>
                 <ControlLabel>Buildling/Flat no</ControlLabel>
                 <FormControl onChange={event => setInput('building_detail', event.target.value)} placeholder="Building detail" />
@@ -114,17 +101,28 @@ const RequestFoodForm = () => {
                 <ControlLabel>Email Address</ControlLabel>
                 <FormControl onChange={event => setInput('email_address', event.target.value)} placeholder="email_address" />
             </FormGroup>
-            <FormGroup>
-                <ControlLabel>No of Adults</ControlLabel>
-                <FormControl onChange={event => setInput('num_of_adults', event.target.value)} placeholder="Number of adults" />
+            <FormGroup controlId="caseAddForm.ControlSelect1">
+                <ControlLabel>Request Type</ControlLabel>
+                <Select
+                    onChange={selectedOption => setInput('request_type', selectedOption)}
+                    options={requestOptions}
+                />
             </FormGroup>
             <FormGroup>
-                <ControlLabel>No of Childrens</ControlLabel>
-                <FormControl onChange={event => setInput('num_of_children', event.target.value)} placeholder="Number of children" />
+                <ControlLabel>Num of cases per week</ControlLabel>
+                <FormControl onChange={event => setInput('cases_per_week', event.target.value)} placeholder="Num of cases per week" />
             </FormGroup>
-            <Button variant="primary" onClick={addRequest}>Create</Button> 
+            <FormGroup>
+                <ControlLabel>Num of Volunteers</ControlLabel>
+                <FormControl onChange={event => setInput('num_of_volunteers', event.target.value)} placeholder="Num of Volunteers in your organisation" />
+            </FormGroup>
+            <FormGroup>
+                <ControlLabel>Donation Link</ControlLabel>
+                <FormControl onChange={event => setInput('link', event.target.value)} placeholder="Please add link to your donation page." />
+            </FormGroup>
+            <Button variant="primary" onClick={addDistributor}>Create</Button>
         </Form>
     )
 }
 
-export default RequestFoodForm;
+export default DistributorAddForm;

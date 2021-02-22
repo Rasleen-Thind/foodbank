@@ -35,7 +35,7 @@ class AdminNavbarLinks extends Component {
             <p className="hidden-lg hidden-md">Dashboard</p>
           </NavItem>
         </Nav>
-        <Nav pullRight>
+        {/* <Nav pullRight>
           <NavItem eventKey={1} href="#">
             Account
           </NavItem>
@@ -52,7 +52,7 @@ class AdminNavbarLinks extends Component {
           <NavItem eventKey={3} href="#">
             Log out
           </NavItem>
-        </Nav>
+        </Nav> */}
       </div>
     );
   }

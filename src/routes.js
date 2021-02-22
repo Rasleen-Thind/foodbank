@@ -23,6 +23,7 @@ import Icons from "views/Icons.jsx";
 import Maps from "views/Maps.jsx";
 import Notifications from "views/Notifications.jsx";
 import Upgrade from "views/Upgrade.jsx";
+import JoinUs from "views/JoinUs";
 
 const dashboardRoutes = [
   {
@@ -41,7 +42,7 @@ const dashboardRoutes = [
   },
   {
     path: "/table",
-    name: "Requests",
+    name: "Cases",
     icon: "pe-7s-note2",
     component: TableList,
     layout: "/admin"
@@ -53,13 +54,13 @@ const dashboardRoutes = [
   //   component: Typography,
   //   layout: "/admin"
   // },
-  {
-    path: "/icons",
-    name: "Icons",
-    icon: "pe-7s-science",
-    component: Icons,
-    layout: "/admin"
-  },
+  // {
+  //   path: "/icons",
+  //   name: "Icons",
+  //   icon: "pe-7s-science",
+  //   component: Icons,
+  //   layout: "/admin"
+  // },
   {
     path: "/maps",
     name: "FoodBank Maps",
@@ -68,12 +69,19 @@ const dashboardRoutes = [
     layout: "/admin"
   },
   {
-    path: "/notifications",
-    name: "Notifications",
-    icon: "pe-7s-bell",
-    component: Notifications,
+    path: "/join_us",
+    name: "Join US",
+    icon: "pe-7s-user",
+    component: JoinUs,
     layout: "/admin"
-  }
+  },
+  // {
+  //   path: "/notifications",
+  //   name: "Notifications",
+  //   icon: "pe-7s-bell",
+  //   component: Notifications,
+  //   layout: "/admin"
+  // }
   // {
   //   upgrade: true,
   //   path: "/upgrade",
